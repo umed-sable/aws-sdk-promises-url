@@ -16,10 +16,10 @@ const authentication = function (req, res, next) {
             return res.status(401).send({ status: false, message: "token is invalid" });
         }
 
-        let time=Math.floor(Date.now()/1000)
-        if(decodedToken.expiresIn<time){
-            return  res.status(401).send({ status: false, message: "token is expired,please login again" });
-        }
+        // let time=Math.floor(Date.now()/1000)
+        // if(decodedToken.expiresIn<time){
+        //     return  res.status(401).send({ status: false, message: "token is expired,please login again" });
+        // }
        req.decodedToken = decodedToken
 
         next();
@@ -43,10 +43,10 @@ let authorization = async function (req, res, next)  {
         if (!decodedToken) {
             return res.status(401).send({ status: false, msg: "token is invalid" });
         }
-        let time=Math.floor(Date.now()/1000)
-        if(decodedToken.exp<time){
-            return  res.status(401).send({ status: false, message: "token is expired,please login again" });
-        }
+        // let time=Math.floor(Date.now()/1000)
+        // if(decodedToken.exp<time){
+        //     return  res.status(401).send({ status: false, message: "token is expired,please login again" });
+        // }
         let decodedUserId=decodedToken.userId
         let bookIdParams=req.params.bookId
         

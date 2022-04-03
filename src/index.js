@@ -5,20 +5,20 @@ const route = require('./routes/route.js');
 const { default: mongoose } = require('mongoose');
 const app = express();
 
-var multer = require('multer');
-var upload = multer();
+const multer = require('multer');
 
-app.use(upload.array()); 
+// app.use(upload.array()); 
 app.use(express.static('public'));
+app.use(multer().any())
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-app.post("/api/uploadFile", upload.single("myFile"), (req, res) => {
-    // Stuff to be added later
-    console.log(req.file);
-  });
+// app.post("/api/uploadFile", upload.single("myFile"), (req, res) => {
+//     // Stuff to be added later
+//     console.log(req.file);
+//   });
 
 
 mongoose.connect("mongodb+srv://sumandev:aBosU15RXTGZYkKq@cluster0.4du2i.mongodb.net/group33database?retryWrites=true&w=majority", {useNewUrlParser: true})
